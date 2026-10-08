@@ -41,7 +41,7 @@ export default function CartPage() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                 </div>
                 <h2 className="empty-title">GIỎ HÀNG CỦA BẠN ĐANG TRỐNG</h2>
-                <p className="empty-desc">Chưa có sản phẩm nào trong giỏ hàng. Hãy khám phá bộ sưu tập bật lửa thượng lưu tại Tiệm Lửa!</p>
+                <p className="empty-desc">Chưa có sản phẩm nào trong giỏ hàng. Hãy khám phá bộ sưu tập đồ thủ công decor tại Mini Shop!</p>
                 <Link href="/products" className="btn-browse-products">KHÁM PHÁ SẢN PHẨM NGAY</Link>
               </div>
             ) : (
@@ -64,7 +64,7 @@ export default function CartPage() {
                           <div className="cart-item-info">
                             <img src={item.img} alt={item.name} className="cart-item-img" />
                             <div className="cart-item-details">
-                              <span className="cart-item-cat">{item.categoryName || 'Bật Lửa Luxury'}</span>
+                              <span className="cart-item-cat">{item.categoryName || 'Đồ Thủ Công'}</span>
                               <h3 className="cart-item-title">
                                 <Link href={`/products/${item.id}`}>{item.name}</Link>
                               </h3>
@@ -148,8 +148,8 @@ export default function CartPage() {
                     <div className="cart-support-box">
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                       <div>
-                        <strong>Cần hỗ trợ thanh toán?</strong>
-                        <p>Hotline tư vấn VIP: 0888.368.726 (8h00 - 22h00)</p>
+                        <strong>Cần hỗ trợ đặt hàng?</strong>
+                        <p>Hotline tư vấn Mini Shop: 093.114.4858 (8h00 - 22h00)</p>
                       </div>
                     </div>
                   </div>

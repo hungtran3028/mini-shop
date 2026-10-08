@@ -39,8 +39,15 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!custName || !custPhone || !custAddress) {
-      alert('Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ giao hàng!');
+    if (!custName.trim() || !custPhone.trim() || !custAddress.trim()) {
+      alert('Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ giao hàng để Mini Shop phục vụ bạn tốt nhất!');
+      return;
+    }
+
+    const cleanPhone = custPhone.trim().replace(/\s+/g, '');
+    const phoneRegex = /^(0|\+84)[0-9]{9,10}$/;
+    if (!phoneRegex.test(cleanPhone)) {
+      alert('Số điện thoại nhận hàng không hợp lệ! Vui lòng nhập số điện thoại từ 10 chữ số (ví dụ: 0931144858).');
       return;
     }
 
@@ -85,9 +92,9 @@ export default function CheckoutPage() {
 
     // Backup to localStorage for client offline fallback
     try {
-      const local = localStorage.getItem('tiemlua_orders');
+      const local = localStorage.getItem('minishop_orders');
       const existing = local ? JSON.parse(local) : [];
-      localStorage.setItem('tiemlua_orders', JSON.stringify([newOrder, ...existing]));
+      localStorage.setItem('minishop_orders', JSON.stringify([newOrder, ...existing]));
     } catch (err) {
       console.error(err);
     }
@@ -258,11 +265,11 @@ export default function CheckoutPage() {
                               </div>
                               <div className="bank-info-item">
                                 <span className="bank-info-label">Chủ tài khoản</span>
-                                <span className="bank-info-val">LAI DAI VUONG</span>
+                                <span className="bank-info-val">MINI SHOP DECOR</span>
                               </div>
                               <div className="bank-info-item">
                                 <span className="bank-info-label">Cú pháp chuyển khoản</span>
-                                <span className="bank-info-val" style={{ color: '#d97706' }}>TIEMLUA {orderCode}</span>
+                                <span className="bank-info-val" style={{ color: '#d97706' }}>MINISHOP {orderCode}</span>
                               </div>
                             </div>
 
@@ -354,7 +361,7 @@ export default function CheckoutPage() {
                     </button>
 
                     <div style={{ marginTop: 16, textAlign: 'center', fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
-                      Bằng việc bấm đặt hàng, bạn đồng ý với điều khoản dịch vụ Tiệm Lửa.
+                      Bằng việc bấm đặt hàng, bạn đồng ý với điều khoản dịch vụ Mini Shop Decor.
                     </div>
                   </div>
                 </div>
@@ -376,7 +383,7 @@ export default function CheckoutPage() {
             ĐẶT HÀNG THÀNH CÔNG!
           </h2>
           <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: 20 }}>
-            Cảm ơn bạn đã lựa chọn tuyệt tác tại <strong>Tiệm Lửa</strong>. Đơn hàng đã được lưu vào hệ thống:
+            Cảm ơn bạn đã lựa chọn sản phẩm trang trí tại <strong>Mini Shop Decor</strong>. Đơn hàng đã được lưu vào hệ thống:
           </p>
 
           <div style={{ background: '#f8fafc', border: '1px dashed var(--color-accent)', padding: 12, borderRadius: 6, marginBottom: 20 }}>

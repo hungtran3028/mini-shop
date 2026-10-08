@@ -130,8 +130,8 @@ export default function ProductDetailPage() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                 </div>
                 <div>
-                  <h4 className="guarantee-title">CAM KẾT CHẤT LƯỢNG TIỆM LỬA</h4>
-                  <p className="guarantee-text">100% đúng hình chụp thực tế • Kiểm tra âm thanh Pinh trước khi nhận hàng • Bảo hành kỹ thuật trọn đời.</p>
+                  <h4 className="guarantee-title">CAM KẾT CHẤT LƯỢNG MINI SHOP</h4>
+                  <p className="guarantee-text">100% chế tác thủ công tinh xảo • Kiểm tra hàng trước khi thanh toán • Đổi trả linh hoạt trong 7 ngày.</p>
                 </div>
               </div>
             </div>

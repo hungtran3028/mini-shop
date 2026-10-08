@@ -124,7 +124,7 @@ export const UserModal: React.FC<UserModalProps> = ({
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', margin: 0, letterSpacing: 1 }}>
                 {user ? 'CHỈNH SỬA THÔNG TIN USER' : 'THÊM TÀI KHOẢN USER MỚI'}
               </h2>
-              <div style={{ fontSize: '0.775rem', color: '#C89B3C', marginTop: 2 }}>Trạm quản lý người dùng & khách hàng Tiệm Lửa</div>
+              <div style={{ fontSize: '0.775rem', color: '#C89B3C', marginTop: 2 }}>Trạm quản lý người dùng & khách hàng Mini Shop Decor</div>
             </div>
           </div>
 

@@ -69,7 +69,7 @@ export default function LoginPage() {
     if (!res.success) {
       setErrorMsg(res.error || 'Đăng ký không thành công. Thông tin này có thể đã được đăng ký.');
     } else {
-      setSuccessMsg('Đăng ký tài khoản Khách hàng Tiệm Lửa thành công!');
+      setSuccessMsg('Đăng ký tài khoản Khách hàng Mini Shop thành công!');
       setTimeout(() => {
         router.push('/');
       }, 800);
@@ -84,7 +84,7 @@ export default function LoginPage() {
           <div className="breadcrumb">
             <Link href="/">Trang Chủ</Link>
             <span>&rsaquo;</span>
-            <span className="active-crumb">Tài Khoản Tiệm Lửa</span>
+            <span className="active-crumb">Tài Khoản Mini Shop</span>
           </div>
         </div>
       </section>
@@ -133,15 +133,15 @@ export default function LoginPage() {
 
               <div>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(197, 160, 89, 0.2)', border: '1px solid var(--color-accent)', padding: '6px 16px', borderRadius: 30, color: 'var(--color-accent)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: 1.5, marginBottom: 24 }}>
-                  ⚡ THÀNH VIÊN VIP TIỆM LỬA
+                  🌿 THÀNH VIÊN MINI SHOP
                 </div>
 
                 <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', fontWeight: 800, color: '#fff', lineHeight: 1.3, marginBottom: 16 }}>
-                  ĐẲNG CẤP BẬT LỬA QUÝ ÔNG
+                  KHÔNG GIAN SỐNG NGHỆ THUẬT
                 </h2>
 
                 <p style={{ color: '#cbd5e1', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: 30 }}>
-                  Đăng nhập tài khoản để nhận chính sách bảo hành trọn đời, căn chỉnh âm Pinh miễn phí & theo dõi đơn hàng dễ dàng.
+                  Đăng nhập tài khoản để nhận ưu đãi thành viên, lưu danh sách đồ thủ công yêu thích & theo dõi đơn hàng tiện lợi.
                 </p>
 
                 {/* Hero Showcase Image */}
@@ -392,7 +392,7 @@ export default function LoginPage() {
               {/* Back to Home Link */}
               <div style={{ marginTop: 24, textAlign: 'center' }}>
                 <Link href="/" style={{ fontSize: '0.825rem', color: '#64748b', textDecoration: 'none', fontWeight: 600 }}>
-                  &larr; Quay lại trang chủ Tiệm Lửa
+                  &larr; Quay lại trang chủ Mini Shop
                 </Link>
               </div>
 

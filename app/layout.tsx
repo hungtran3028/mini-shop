@@ -4,8 +4,8 @@ import { AppProviders } from '@/context/AppProviders';
 import { MainLayoutWrapper } from '@/components/layout/MainLayoutWrapper';
 
 export const metadata: Metadata = {
-  title: 'Tiệm Lửa | Bật Lửa S.T. Dupont, Rowenta R10 & Dupont HongKong Luxury',
-  description: 'Tiệm Lửa - Chuyên mua bán, chế tác và phân phối các dòng bật lửa cao cấp chính hãng S.T. Dupont, Rowenta R10, Dupont Hongkong đẳng cấp quý ông.',
+  title: 'Mini Shop Decor | Đồ Thủ Công Mỹ Nghệ & Trang Trí Nhà Cửa Tinh Tế',
+  description: 'Mini Shop Decor - Chuyên cung cấp đồ thủ công mỹ nghệ, gốm sứ mộc mạc và nội thất trang trí gia dụng thủ công tinh xảo chuẩn phong cách sống xanh.',
 };
 
 export default function RootLayout({

@@ -87,8 +87,8 @@ ON CONFLICT (id) DO NOTHING;
 
 -- 8. TÀI KHOẢN ADMIN MẪU
 INSERT INTO public.profiles (id, email, fullname, phone, role, status) VALUES
-('admin-master', 'admin@minishop.vn', 'Chủ Cửa Hàng Mini Shop', '0931144858', 'admin', 'active')
-ON CONFLICT (id) DO NOTHING;
+('admin-master', 'admin@minishop.com', 'Chủ Cửa Hàng Mini Shop', '0931144858', 'admin', 'active')
+ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email, role = EXCLUDED.role;
 
 -- ============================================================================
 -- 9. CHÍNH SÁCH BẢO MẬT RLS (ROW LEVEL SECURITY) - BẬT TRƯỚC KHI LÊN MẠNG (BÀI 8)

@@ -22,7 +22,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      const local = localStorage.getItem('tiemlua_cart');
+      const local = localStorage.getItem('minishop_cart') || localStorage.getItem('tiemlua_cart');
       if (local) {
         setCart(JSON.parse(local));
       }
@@ -34,7 +34,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     if (isLoaded) {
-      localStorage.setItem('tiemlua_cart', JSON.stringify(cart));
+      localStorage.setItem('minishop_cart', JSON.stringify(cart));
     }
   }, [cart, isLoaded]);
 

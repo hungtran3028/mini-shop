@@ -23,7 +23,7 @@ import { useAuth } from '@/context/AuthContext';
 
 export default function AdminDashboardPage() {
   const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user, logout, loading: authLoading, isAdmin } = useAuth();
 
   const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'orders' | 'users'>('overview');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -81,7 +81,7 @@ export default function AdminDashboardPage() {
       if (ordersData && ordersData.length > 0) {
         setOrders(ordersData);
       } else {
-        const localOrders = localStorage.getItem('tiemlua_orders');
+        const localOrders = localStorage.getItem('minishop_orders');
         if (localOrders) {
           setOrders(JSON.parse(localOrders));
         }
@@ -155,7 +155,7 @@ export default function AdminDashboardPage() {
   };
 
   const handleDeleteUser = async (id: string, email: string) => {
-    if (email === 'admin@tiemlua.com') {
+    if (email === 'admin@minishop.com') {
       alert('🔒 Không thể xóa tài khoản Master Admin!');
       return;
     }
@@ -166,7 +166,7 @@ export default function AdminDashboardPage() {
   };
 
   const handleToggleUserLock = async (u: User) => {
-    if (u.email === 'admin@tiemlua.com') {
+    if (u.email === 'admin@minishop.com') {
       alert('🔒 Không thể khóa tài khoản Master Admin!');
       return;
     }
@@ -180,7 +180,7 @@ export default function AdminDashboardPage() {
     await updateOrderStatusInSupabase(orderId, newStatus);
     const updated = orders.map(ord => ord.id === orderId ? { ...ord, status: newStatus } : ord);
     setOrders(updated);
-    localStorage.setItem('tiemlua_orders', JSON.stringify(updated));
+    localStorage.setItem('minishop_orders', JSON.stringify(updated));
   };
 
   const handleLogout = () => {
@@ -242,12 +242,46 @@ export default function AdminDashboardPage() {
 
   const filteredOrders = orderFilterStatus === 'all' ? orders : orders.filter(o => o.status === orderFilterStatus);
 
-  if (!hasMounted) {
+  if (!hasMounted || authLoading) {
     return (
       <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', background: '#0F172A', color: '#fff' }}>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '2rem', marginBottom: 10 }}>🔥</div>
-          <div style={{ fontSize: '0.9rem', color: '#C89B3C', fontWeight: 800 }}>ĐANG TẢI HỆ THỐNG QUẢN TRỊ TIỆM LỬA...</div>
+          <div style={{ fontSize: '2.4rem', marginBottom: 12 }}>🌿</div>
+          <div style={{ fontSize: '0.95rem', color: '#10B981', fontWeight: 800, letterSpacing: 1 }}>ĐANG TẢI HỆ THỐNG QUẢN TRỊ MINI SHOP DECOR...</div>
+          <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: 6 }}>Vui lòng chờ trong giây lát</div>
+        </div>
+      </div>
+    );
+  }
+
+  // 🔒 SECURITY GUARD: Check admin authorization (Chapter 7 - Stranger Test)
+  if (!isAdmin) {
+    return (
+      <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', background: '#0F172A', color: '#fff', padding: 20 }}>
+        <div style={{ maxWidth: 480, width: '100%', background: '#1e293b', padding: '40px 32px', borderRadius: 20, textAlign: 'center', border: '1px solid #334155', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }}>
+          <div style={{ width: 68, height: 68, borderRadius: '50%', background: 'rgba(239, 68, 68, 0.15)', color: '#ef4444', fontSize: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
+            🔒
+          </div>
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', fontWeight: 800, color: '#fff', marginBottom: 12, letterSpacing: 0.5 }}>
+            TRUY CẬP BỊ TỪ CHỐI
+          </h1>
+          <p style={{ fontSize: '0.9rem', color: '#94a3b8', lineHeight: 1.6, marginBottom: 28 }}>
+            Khu vực Quản trị (Admin Dashboard) chỉ dành riêng cho chủ cửa hàng và quản trị viên Mini Shop Decor. Vui lòng đăng nhập với tài khoản Admin để tiếp tục.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <Link 
+              href="/login" 
+              style={{ display: 'block', padding: '12px 20px', background: '#10B981', color: '#fff', borderRadius: 10, fontWeight: 700, textDecoration: 'none', fontSize: '0.9rem', letterSpacing: 0.5, boxShadow: '0 4px 14px rgba(16, 185, 129, 0.3)' }}
+            >
+              ĐĂNG NHẬP ADMIN NGAY
+            </Link>
+            <Link 
+              href="/" 
+              style={{ display: 'block', padding: '12px 20px', background: 'transparent', color: '#cbd5e1', borderRadius: 10, fontWeight: 600, textDecoration: 'none', fontSize: '0.85rem', border: '1px solid #475569' }}
+            >
+              &larr; Về Trang Chủ Cửa Hàng
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -280,24 +314,24 @@ export default function AdminDashboardPage() {
               width: 40, 
               height: 40, 
               borderRadius: 10, 
-              background: 'linear-gradient(135deg, #C89B3C 0%, #a67c2e 100%)', 
+              background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)', 
               color: '#fff', 
               fontSize: '1.3rem', 
               fontWeight: 800, 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
-              boxShadow: '0 4px 14px rgba(200, 155, 60, 0.4)',
+              boxShadow: '0 4px 14px rgba(16, 185, 129, 0.4)',
               flexShrink: 0
             }}>
-              🔥
+              🌿
             </div>
             {!isSidebarCollapsed && (
               <div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', fontWeight: 800, letterSpacing: 1.5, color: '#fff', whiteSpace: 'nowrap' }}>
-                  TIỆM LỬA <span style={{ color: '#C89B3C' }}>ADMIN</span>
+                  MINI SHOP <span style={{ color: '#10B981' }}>ADMIN</span>
                 </div>
-                <div style={{ fontSize: '0.7rem', color: '#94a3b8', marginTop: 1 }}>Luxury Portal</div>
+                <div style={{ fontSize: '0.7rem', color: '#94a3b8', marginTop: 1 }}>Decor & Handmade Portal</div>
               </div>
             )}
           </div>
@@ -457,7 +491,7 @@ export default function AdminDashboardPage() {
               {activeTab === 'orders' && '🛒 Quản Lý Đơn Đặt Hàng'}
               {activeTab === 'users' && '👥 Quản Lý Danh Sách User'}
             </h1>
-            <div style={{ fontSize: '0.775rem', color: '#64748b', marginTop: 2 }}>Trạm điều hành thương mại điện tử Tiệm Lửa</div>
+            <div style={{ fontSize: '0.775rem', color: '#64748b', marginTop: 2 }}>Trạm điều hành thương mại điện tử Mini Shop Decor</div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
@@ -1272,7 +1306,7 @@ export default function AdminDashboardPage() {
                                   </button>
 
                                   {/* Lock / Unlock Button */}
-                                  {u.email !== 'admin@tiemlua.com' && (
+                                  {u.email !== 'admin@minishop.com' && (
                                     <button
                                       onClick={() => handleToggleUserLock(u)}
                                       title={isLocked ? 'Mở khóa tài khoản' : 'Khóa tài khoản'}
@@ -1292,7 +1326,7 @@ export default function AdminDashboardPage() {
                                   )}
 
                                   {/* Delete Button */}
-                                  {u.email !== 'admin@tiemlua.com' && (
+                                  {u.email !== 'admin@minishop.com' && (
                                     <button
                                       onClick={() => handleDeleteUser(u.id || '', u.email)}
                                       title="Xóa User"

@@ -17,7 +17,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     try {
-      const local = localStorage.getItem('tiemlua_wishlist');
+      const local = localStorage.getItem('minishop_wishlist') || localStorage.getItem('tiemlua_wishlist');
       if (local) {
         setWishlist(JSON.parse(local));
       }
@@ -29,7 +29,7 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     if (isLoaded) {
-      localStorage.setItem('tiemlua_wishlist', JSON.stringify(wishlist));
+      localStorage.setItem('minishop_wishlist', JSON.stringify(wishlist));
     }
   }, [wishlist, isLoaded]);
 
