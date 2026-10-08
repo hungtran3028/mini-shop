@@ -58,7 +58,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     // 1. Check local persistent user session
     try {
-      const local = localStorage.getItem('tiemlua_user');
+      const local = localStorage.getItem('minishop_user');
       if (local) {
         setUser(JSON.parse(local));
       }
@@ -94,16 +94,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const cleanInput = emailOrUsername.trim().toLowerCase();
 
     // 🔒 1. DEDICATED MASTER ADMIN ACCOUNT CHECK
-    if ((cleanInput === 'admin' || cleanInput === 'admin@tiemlua.com') && pass === 'admin') {
+    if ((cleanInput === 'admin' || cleanInput === 'admin@minishop.com') && pass === 'admin') {
       const masterAdmin: User = {
         id: 'master-admin-id',
-        email: 'admin@tiemlua.com',
-        fullname: 'Lại Đại Vương',
+        email: 'admin@minishop.com',
+        fullname: 'Chủ Cửa Hàng Mini Shop',
         role: 'admin',
         avatar: 'L'
       };
       setUser(masterAdmin);
-      localStorage.setItem('tiemlua_user', JSON.stringify(masterAdmin));
+      localStorage.setItem('minishop_user', JSON.stringify(masterAdmin));
       return { success: true, isAdmin: true };
     }
 
@@ -134,7 +134,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       // Check local storage fallback user list
       if (!matchedUser && typeof window !== 'undefined') {
-        const localListStr = localStorage.getItem('tiemlua_users_list');
+        const localListStr = localStorage.getItem('minishop_users_list');
         if (localListStr) {
           const localList: User[] = JSON.parse(localListStr);
           const found = localList.find(u => u.email.toLowerCase() === cleanInput && u.password === pass);
@@ -152,7 +152,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           return { success: false, error: 'Tài khoản của bạn đã bị khóa bởi quản trị viên!' };
         }
         setUser(matchedUser);
-        localStorage.setItem('tiemlua_user', JSON.stringify(matchedUser));
+        localStorage.setItem('minishop_user', JSON.stringify(matchedUser));
         return { success: true, isAdmin: matchedUser.role === 'admin' };
       }
     } catch (err) {
@@ -174,7 +174,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const mapped = mapSupabaseUser(data.user);
         mapped.role = 'user'; // Strictly 'user' role for public logins
         setUser(mapped);
-        localStorage.setItem('tiemlua_user', JSON.stringify(mapped));
+        localStorage.setItem('minishop_user', JSON.stringify(mapped));
       }
 
       return { success: true, isAdmin: false };
@@ -220,7 +220,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const isRateLimit = error.message.toLowerCase().includes('rate limit') || error.message.toLowerCase().includes('invalid');
         if (isRateLimit) {
           setUser(registeredUser);
-          localStorage.setItem('tiemlua_user', JSON.stringify(registeredUser));
+          localStorage.setItem('minishop_user', JSON.stringify(registeredUser));
           return { success: true };
         }
         return { success: false, error: translateSupabaseError(error.message) };
@@ -230,10 +230,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const mapped = mapSupabaseUser(data.user);
         mapped.role = 'user'; // STRICTLY USER ROLE ONLY
         setUser(mapped);
-        localStorage.setItem('tiemlua_user', JSON.stringify(mapped));
+        localStorage.setItem('minishop_user', JSON.stringify(mapped));
       } else {
         setUser(registeredUser);
-        localStorage.setItem('tiemlua_user', JSON.stringify(registeredUser));
+        localStorage.setItem('minishop_user', JSON.stringify(registeredUser));
       }
 
       return { success: true };
@@ -249,7 +249,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Error signing out:', err);
     } finally {
       setUser(null);
-      localStorage.removeItem('tiemlua_user');
+      localStorage.removeItem('minishop_user');
     }
   };
 

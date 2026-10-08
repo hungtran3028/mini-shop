@@ -9,18 +9,16 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export function mapSupabaseProduct(row: any): Product {
   const categoryNameMap: Record<string, string> = {
-    'st-dupont': 'S.T. Dupont France',
-    'dupont-hk': 'Dupont Hongkong',
-    'dupont-hongkong': 'Dupont Hongkong',
-    'rowenta': 'Rowenta R10',
-    'phu-kien': 'Phụ Kiện Lửa',
+    'do-thu-cong': 'Đồ thủ công',
+    'do-my-nghe': 'Đồ mỹ nghệ',
+    'noi-that-gia-dung': 'Nội thất gia dụng',
   };
 
   const categoryId = row.category_id || row.category || 'st-dupont';
   const priceNum = Number(row.price) || 0;
   const formattedPrice = row.price_formatted || (priceNum ? new Intl.NumberFormat('vi-VN').format(priceNum) + 'đ' : '0đ');
 
-  const rawImg = row.image_url || row.img || '/assets/img/banner/banner.png';
+  const rawImg = row.image_url || row.img || '/assets/images/banner/banner-trang-chu-mini-shop.webp';
   const safeImg = rawImg.startsWith('http') || rawImg.startsWith('data:') ? rawImg : encodeURI(rawImg);
 
   return {
@@ -53,7 +51,7 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
   // Merge with custom products in localStorage so newly added products ALWAYS show 100%
   try {
     if (typeof window !== 'undefined') {
-      const local = localStorage.getItem('tiemlua_custom_products');
+      const local = localStorage.getItem('minishop_custom_products');
       if (local) {
         const customList: Product[] = JSON.parse(local);
         const combinedMap = new Map<string, Product>();
@@ -90,7 +88,7 @@ export async function fetchProductByIdFromSupabase(id: string): Promise<Product>
 export async function saveProductToSupabase(product: Product, isEditing: boolean) {
   const cleanProd: Product = {
     ...product,
-    img: product.img || '/assets/img/products/S.T Dupont/Lacquered lighter cohiba 60 black.webp'
+    img: product.img || '/assets/images/products/do-thu-cong/gio-may-dan.webp'
   };
 
   try {
@@ -121,14 +119,14 @@ export async function saveProductToSupabase(product: Product, isEditing: boolean
   // Always update local persistent storage so new product is guaranteed to display
   try {
     if (typeof window !== 'undefined') {
-      const local = localStorage.getItem('tiemlua_custom_products');
+      const local = localStorage.getItem('minishop_custom_products');
       let list: Product[] = local ? JSON.parse(local) : [];
       if (isEditing) {
         list = list.map(p => p.id === cleanProd.id ? cleanProd : p);
       } else {
         list = [cleanProd, ...list.filter(p => p.id !== cleanProd.id)];
       }
-      localStorage.setItem('tiemlua_custom_products', JSON.stringify(list));
+      localStorage.setItem('minishop_custom_products', JSON.stringify(list));
     }
   } catch (e) {
     console.warn('Error saving local custom product:', e);
@@ -147,11 +145,11 @@ export async function deleteProductFromSupabase(id: string) {
 
   try {
     if (typeof window !== 'undefined') {
-      const local = localStorage.getItem('tiemlua_custom_products');
+      const local = localStorage.getItem('minishop_custom_products');
       if (local) {
         let list: Product[] = JSON.parse(local);
         list = list.filter(p => p.id !== id);
-        localStorage.setItem('tiemlua_custom_products', JSON.stringify(list));
+        localStorage.setItem('minishop_custom_products', JSON.stringify(list));
       }
     }
   } catch (e) {
@@ -239,10 +237,10 @@ export async function fetchOrdersFromSupabase(): Promise<Order[]> {
         },
         items: relatedItems.map((item: any) => ({
           id: item.product_id || String(item.id),
-          name: item.product_name || 'Sản phẩm Tiệm Lửa',
+          name: item.product_name || 'Sản phẩm Mini Shop',
           priceNum: Number(item.price) || 0,
           quantity: Number(item.quantity) || 1,
-          img: '/assets/img/banner/banner.png'
+          img: '/assets/images/banner/banner-trang-chu-mini-shop.webp'
         })),
         subtotal: Number(row.total_amount) || 0,
         discount: 0,
@@ -272,9 +270,9 @@ export async function updateOrderStatusInSupabase(orderId: string, status: strin
 export const INITIAL_USERS_DATA: User[] = [
   {
     id: 'master-admin-id',
-    email: 'admin@tiemlua.com',
-    fullname: 'Lại Đại Vương',
-    phone: '0888 368 726',
+    email: 'admin@minishop.com',
+    fullname: 'Chủ Cửa Hàng Mini Shop',
+    phone: '093 114 4858',
     role: 'admin',
     avatar: '👑',
     createdAt: '2026-01-15 08:30',
@@ -348,7 +346,7 @@ export async function fetchUsersFromSupabase(): Promise<User[]> {
   // Filter out deleted users
   try {
     if (typeof window !== 'undefined') {
-      const deletedIdsStr = localStorage.getItem('tiemlua_deleted_users');
+      const deletedIdsStr = localStorage.getItem('minishop_deleted_users');
       if (deletedIdsStr) {
         const deletedIds: string[] = JSON.parse(deletedIdsStr);
         dbUsers = dbUsers.filter(u => !u.id || !deletedIds.includes(u.id));
@@ -361,9 +359,9 @@ export async function fetchUsersFromSupabase(): Promise<User[]> {
   // Merge with local persistent users
   try {
     if (typeof window !== 'undefined') {
-      let local = localStorage.getItem('tiemlua_users_list');
+      let local = localStorage.getItem('minishop_users_list');
       if (!local) {
-        localStorage.setItem('tiemlua_users_list', JSON.stringify(INITIAL_USERS_DATA));
+        localStorage.setItem('minishop_users_list', JSON.stringify(INITIAL_USERS_DATA));
         local = JSON.stringify(INITIAL_USERS_DATA);
       }
 
@@ -382,7 +380,7 @@ export async function fetchUsersFromSupabase(): Promise<User[]> {
         });
 
         // Ensure deleted users are completely removed
-        const deletedIdsStr = localStorage.getItem('tiemlua_deleted_users');
+        const deletedIdsStr = localStorage.getItem('minishop_deleted_users');
         if (deletedIdsStr) {
           const deletedIds: string[] = JSON.parse(deletedIdsStr);
           const emailsToDelete: string[] = [];
@@ -448,12 +446,12 @@ export async function saveUserToSupabase(user: User, isEditing: boolean) {
   // Remove from deleted list if re-saved
   try {
     if (typeof window !== 'undefined') {
-      const deletedIdsStr = localStorage.getItem('tiemlua_deleted_users');
+      const deletedIdsStr = localStorage.getItem('minishop_deleted_users');
       if (deletedIdsStr) {
         let deletedIds: string[] = JSON.parse(deletedIdsStr);
         if (cleanUser.id && deletedIds.includes(cleanUser.id)) {
           deletedIds = deletedIds.filter(id => id !== cleanUser.id);
-          localStorage.setItem('tiemlua_deleted_users', JSON.stringify(deletedIds));
+          localStorage.setItem('minishop_deleted_users', JSON.stringify(deletedIds));
         }
       }
     }
@@ -472,7 +470,7 @@ export async function saveUserToSupabase(user: User, isEditing: boolean) {
         const filtered = allUsers.filter(u => u.id !== cleanUser.id && u.email.toLowerCase() !== cleanUser.email.toLowerCase());
         updatedList = [cleanUser, ...filtered];
       }
-      localStorage.setItem('tiemlua_users_list', JSON.stringify(updatedList));
+      localStorage.setItem('minishop_users_list', JSON.stringify(updatedList));
     }
   } catch (e) {
     console.warn('Error saving local user:', e);
@@ -491,11 +489,11 @@ export async function deleteUserFromSupabase(id: string) {
   // Add to local deleted tracking list
   try {
     if (typeof window !== 'undefined') {
-      const deletedIdsStr = localStorage.getItem('tiemlua_deleted_users');
+      const deletedIdsStr = localStorage.getItem('minishop_deleted_users');
       const deletedIds: string[] = deletedIdsStr ? JSON.parse(deletedIdsStr) : [];
       if (!deletedIds.includes(id)) {
         deletedIds.push(id);
-        localStorage.setItem('tiemlua_deleted_users', JSON.stringify(deletedIds));
+        localStorage.setItem('minishop_deleted_users', JSON.stringify(deletedIds));
       }
     }
   } catch (e) {
@@ -504,15 +502,15 @@ export async function deleteUserFromSupabase(id: string) {
 
   try {
     if (typeof window !== 'undefined') {
-      let local = localStorage.getItem('tiemlua_users_list');
+      let local = localStorage.getItem('minishop_users_list');
       if (!local) {
-        localStorage.setItem('tiemlua_users_list', JSON.stringify(INITIAL_USERS_DATA));
+        localStorage.setItem('minishop_users_list', JSON.stringify(INITIAL_USERS_DATA));
         local = JSON.stringify(INITIAL_USERS_DATA);
       }
       if (local) {
         let list: User[] = JSON.parse(local);
         list = list.filter(u => u.id !== id);
-        localStorage.setItem('tiemlua_users_list', JSON.stringify(list));
+        localStorage.setItem('minishop_users_list', JSON.stringify(list));
       }
     }
   } catch (e) {
