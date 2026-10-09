@@ -147,11 +147,12 @@ export default function LoginPage() {
                 {/* Hero Showcase Image */}
                 <div style={{ textAlign: 'center', position: 'relative', margin: '20px 0' }}>
                   <img 
-                    src="/assets/img/products/S.T Dupont/Lacquered lighter cohiba 60 black.webp" 
-                    alt="S.T. Dupont Cohiba 60th" 
+                    src="/assets/images/products/do-thu-cong/tranh-treo-macrame.webp" 
+                    alt="Mini Shop Decor - Tranh Treo Macrame BoHo" 
                     style={{ 
                       maxHeight: 220, 
-                      objectFit: 'contain', 
+                      borderRadius: 16,
+                      objectFit: 'cover', 
                       filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.6))'
                     }} 
                   />
@@ -161,11 +162,11 @@ export default function LoginPage() {
               {/* Bottom Quote & Trust Badges */}
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 20, marginTop: 20 }}>
                 <div style={{ fontStyle: 'italic', fontSize: '0.85rem', color: 'var(--color-accent)', marginBottom: 12 }}>
-                  "Tiếng Pinh ngân vang — Khẳng định vị thế thượng lưu."
+                  "Nét mộc tinh tế — Kiến tạo không gian ấm cúng cho tổ ấm của bạn."
                 </div>
                 <div style={{ display: 'flex', gap: 20, fontSize: '0.75rem', color: '#94a3b8' }}>
                   <span>🔒 Bảo mật thông tin mã hóa 256-bit</span>
-                  <span>⚡ Hỗ trợ 24/7</span>
+                  <span>⚡ Hỗ trợ tư vấn decor 24/7</span>
                 </div>
               </div>
 

@@ -236,7 +236,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   {/* Image */}
                   <div style={{ height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14, overflow: 'hidden' }}>
                     <img 
-                      src={img || '/assets/img/products/S.T Dupont/Lacquered lighter cohiba 60 black.webp'} 
+                      src={img || '/assets/images/products/do-thu-cong/gio-may-dan.webp'} 
                       alt="Preview" 
                       style={{ maxHeight: 180, maxWidth: '100%', objectFit: 'contain' }}
                     />
@@ -244,7 +244,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
                   {/* Name */}
                   <div style={{ fontWeight: 800, fontSize: '0.95rem', color: '#0F172A', marginBottom: 6, lineHeight: 1.4 }}>
-                    {name || 'Tên sản phẩm bật lửa'}
+                    {name || 'Tên sản phẩm decor'}
                   </div>
 
                   {/* Price */}
@@ -258,36 +258,36 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               {/* Sample Preset Images */}
               <div style={{ borderTop: '1px solid #cbd5e1', paddingTop: 16, marginTop: 20 }}>
                 <div style={{ fontSize: '0.775rem', fontWeight: 700, color: '#475569', marginBottom: 8 }}>
-                  📸 Chọn nhanh mẫu ảnh đại diện:
+                  📸 Chọn nhanh mẫu ảnh đại diện decor:
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                   <button 
                     type="button" 
-                    onClick={() => setImg('/assets/img/products/S.T Dupont/Lacquered lighter cohiba 60 black.webp')}
+                    onClick={() => setImg('/assets/images/products/do-thu-cong/gio-may-dan.webp')}
                     style={{ padding: '5px 10px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: 6, fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    S.T. Cohiba
+                    Giỏ Mây Đan
                   </button>
                   <button 
                     type="button" 
-                    onClick={() => setImg('/assets/img/products/S.T Dupont/Micro Diamond head lighter.webp')}
+                    onClick={() => setImg('/assets/images/products/do-thu-cong/tranh-treo-macrame.webp')}
                     style={{ padding: '5px 10px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: 6, fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    S.T. Diamond
+                    Tranh Macrame
                   </button>
                   <button 
                     type="button" 
-                    onClick={() => setImg('/assets/img/products/Dupont HongKong/Silver and Gold Lighter.webp')}
+                    onClick={() => setImg('/assets/images/products/do-my-nghe/den-tre-thu-cong.webp')}
                     style={{ padding: '5px 10px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: 6, fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    Dupont HK
+                    Đèn Tre Nón
                   </button>
                   <button 
                     type="button" 
-                    onClick={() => setImg('/assets/img/products/Rowenta R10/Kim cương vàng.webp')}
+                    onClick={() => setImg('/assets/images/products/do-my-nghe/binh-gom-hoa-bien.webp')}
                     style={{ padding: '5px 10px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: 6, fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    Rowenta R10
+                    Bình Gốm Sứ
                   </button>
                 </div>
               </div>
@@ -304,7 +304,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </label>
                 <input 
                   type="text" 
-                  placeholder="Ví dụ: Bật Lửa S.T. Dupont Cohiba 60th Anniversary" 
+                  placeholder="Ví dụ: Giỏ Mây Đan Thủ Công Tự Nhiên" 
                   value={name} 
                   onChange={(e) => setName(e.target.value)}
                   required 
@@ -366,7 +366,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
                 <input 
                   type="text" 
-                  placeholder="Hoặc dán đường dẫn ảnh: /assets/img/products/..." 
+                  placeholder="Hoặc dán đường dẫn ảnh: /assets/images/products/..." 
                   value={img} 
                   onChange={(e) => setImg(e.target.value)}
                   style={{ width: '100%', boxSizing: 'border-box', height: 40, padding: '0 14px', borderRadius: 8, border: '1px solid #cbd5e1', fontSize: '0.825rem', color: '#0F172A' }}
@@ -399,7 +399,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </label>
                 <textarea 
                   rows={3} 
-                  placeholder="Nhập chi tiết về kiểu dáng, âm Pinh, xuất xứ..." 
+                  placeholder="Nhập chi tiết về chất liệu mộc, kích thước, làng nghề chế tác..." 
                   value={desc} 
                   onChange={(e) => setDesc(e.target.value)}
                   style={{ width: '100%', boxSizing: 'border-box', padding: 12, borderRadius: 8, border: '1px solid #cbd5e1', fontSize: '0.85rem', color: '#0F172A', fontFamily: 'inherit' }}

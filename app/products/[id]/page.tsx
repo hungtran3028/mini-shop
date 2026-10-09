@@ -44,14 +44,14 @@ export default function ProductDetailPage() {
     let transform = 'scale(1) translateY(0) rotate(0deg)';
     if (mode === 'zoom-body' || mode === 'zoom') {
       transform = 'scale(1.85) translateY(-5%) rotate(0deg)';
-    } else if (mode === 'head-rotate') {
-      transform = 'scale(2.25) translateY(18%) rotate(-45deg)';
+    } else if (mode === 'texture-detail') {
+      transform = 'scale(2.25) translateY(10%) rotate(0deg)';
     } else if (mode === 'bottom-detail') {
-      transform = 'scale(2.4) translateY(-22%) rotate(0deg)';
-    } else if (mode === 'flint-wheel') {
-      transform = 'scale(2.3) translateY(12%) rotate(30deg)';
+      transform = 'scale(2.4) translateY(-15%) rotate(0deg)';
+    } else if (mode === 'craft-pattern') {
+      transform = 'scale(2.3) translateY(5%) rotate(15deg)';
     } else if (mode === 'macro-texture') {
-      transform = 'scale(2.8) translateY(0) rotate(-15deg)';
+      transform = 'scale(2.8) translateY(0) rotate(-10deg)';
     }
     return {
       transform,
@@ -62,11 +62,11 @@ export default function ProductDetailPage() {
 
   const thumbnails = [
     { mode: 'full', title: 'Góc 1: Toàn cảnh sản phẩm' },
-    { mode: 'zoom-body', title: 'Góc 2: Cận cảnh thân sản phẩm' },
-    { mode: 'head-rotate', title: 'Góc 3: Cận cảnh đầu nắp xoay 45°' },
-    { mode: 'bottom-detail', title: 'Góc 4: Cận cảnh mộc đáy & logo' },
-    { mode: 'flint-wheel', title: 'Góc 5: Cận cảnh bánh quẹt nghiêng 30°' },
-    { mode: 'macro-texture', title: 'Góc 6: Siêu phóng to hoạ tiết chất liệu' },
+    { mode: 'zoom-body', title: 'Góc 2: Cận cảnh kiểu dáng & kích thước' },
+    { mode: 'texture-detail', title: 'Góc 3: Cận cảnh thớ gỗ & đường đan tỉ mỉ' },
+    { mode: 'bottom-detail', title: 'Góc 4: Cận cảnh phần chân đế & mặt đáy' },
+    { mode: 'craft-pattern', title: 'Góc 5: Chi tiết hoa văn thủ công mỹ nghệ' },
+    { mode: 'macro-texture', title: 'Góc 6: Siêu phóng to chất liệu tự nhiên' },
   ];
 
   return (
@@ -152,7 +152,7 @@ export default function ProductDetailPage() {
               {/* Price Display */}
               <div className="detail-price-box">
                 <span className="detail-current-price">{product.price}</span>
-                <span className="detail-vat-tag">Đã bao gồm VAT & Hộp Velvet Luxury</span>
+                <span className="detail-vat-tag">Đã bao gồm VAT & Đóng gói mộc mạc an toàn</span>
               </div>
 
               {/* Short Description */}
@@ -164,19 +164,19 @@ export default function ProductDetailPage() {
               <div className="detail-specs-highlights">
                 <div className="spec-highlight-item">
                   <span className="spec-label">Thương hiệu:</span>
-                  <strong className="spec-val">{product.specs.brand}</strong>
+                  <strong className="spec-val">{product.specs.brand || 'Mini Shop Decor'}</strong>
                 </div>
                 <div className="spec-highlight-item">
                   <span className="spec-label">Chất liệu:</span>
                   <strong className="spec-val">{product.specs.material}</strong>
                 </div>
                 <div className="spec-highlight-item">
-                  <span className="spec-label">Âm thanh:</span>
-                  <strong className="spec-val">{product.specs.sound || "Tiếng 'Pinh' vang trong nẩy giòn"}</strong>
+                  <span className="spec-label">Phong cách:</span>
+                  <strong className="spec-val">Thủ công Vintage & Scandinavian</strong>
                 </div>
                 <div className="spec-highlight-item">
                   <span className="spec-label">Xuất xứ:</span>
-                  <strong className="spec-val">{product.specs.origin || 'Chính hãng'}</strong>
+                  <strong className="spec-val">{product.specs.origin || 'Việt Nam'}</strong>
                 </div>
               </div>
 
@@ -219,11 +219,11 @@ export default function ProductDetailPage() {
                 </div>
                 <div className="trust-item">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                  <span>Mở hộp kiểm tra & thử lửa vang trước khi thanh toán</span>
+                  <span>Mở hộp kiểm tra sản phẩm & cảm nhận chất liệu trước khi thanh toán</span>
                 </div>
                 <div className="trust-item">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-                  <span>Hỗ trợ bảo hành kỹ thuật, bơm ga & căn nắn âm trọn đời</span>
+                  <span>Bảo hành kết cấu 12 tháng, hỗ trợ tư vấn bảo quản & làm mới trọn đời</span>
                 </div>
               </div>
 
@@ -235,8 +235,8 @@ export default function ProductDetailPage() {
           <div className="detail-tabs-wrapper" style={{ marginTop: 50 }}>
             <div className="tabs-header">
               <button className={`tab-btn ${activeTab === 'desc' ? 'active' : ''}`} onClick={() => setActiveTab('desc')}>MÔ TẢ CHI TIẾT</button>
-              <button className={`tab-btn ${activeTab === 'specs' ? 'active' : ''}`} onClick={() => setActiveTab('specs')}>THÔNG SỐ KỸ THUẬT</button>
-              <button className={`tab-btn ${activeTab === 'guide' ? 'active' : ''}`} onClick={() => setActiveTab('guide')}>HƯỚNG DẪN BƠM GA & THAY ĐÁ</button>
+              <button className={`tab-btn ${activeTab === 'specs' ? 'active' : ''}`} onClick={() => setActiveTab('specs')}>THÔNG SỐ NGHỆ THUẬT</button>
+              <button className={`tab-btn ${activeTab === 'guide' ? 'active' : ''}`} onClick={() => setActiveTab('guide')}>HƯỚNG DẪN BẢO QUẢN & SỬ DỤNG</button>
               <button className={`tab-btn ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => setActiveTab('reviews')}>ĐÁNH GIÁ (38)</button>
             </div>
 
@@ -244,10 +244,10 @@ export default function ProductDetailPage() {
               {/* Tab 1: Description */}
               {activeTab === 'desc' && (
                 <div className="tab-pane active">
-                  <h3 className="tab-title">Nghệ Thuật Chế Tác Đỉnh Cao</h3>
+                  <h3 className="tab-title">Nghệ Thuật Chế Tác Thủ Công Bản Địa</h3>
                   <p>{product.desc}</p>
                   <p style={{ marginTop: 12 }}>
-                    Đặc biệt, âm thanh tiếng mở nắp "Pinh" vang ngân đặc trưng là nhạc trưởng đại diện cho đẳng cấp. Từng chiếc bật lửa rời xưởng đều trải qua bài kiểm tra âm thanh tỉ mỉ bằng tai của các nghệ nhân bậc thầy.
+                    Từng sản phẩm tại Mini Shop Decor là kết tinh của hàng chục giờ lao động tỉ mỉ từ các nghệ nhân làng nghề truyền thống Việt Nam. Chất liệu tự nhiên thân thiện với môi trường, mang lại năng lượng an lành và vẻ đẹp mộc mạc cho tổ ấm của bạn.
                   </p>
                 </div>
               )}
@@ -259,31 +259,31 @@ export default function ProductDetailPage() {
                     <tbody>
                       <tr>
                         <td>Thương hiệu</td>
-                        <td>{product.specs.brand}</td>
+                        <td>{product.specs.brand || 'Mini Shop Decor'}</td>
                       </tr>
                       <tr>
-                        <td>Model</td>
-                        <td>{product.specs.model}</td>
+                        <td>Dòng sản phẩm</td>
+                        <td>{product.categoryName || 'Đồ thủ công'}</td>
                       </tr>
                       <tr>
-                        <td>Chất liệu vỏ</td>
-                        <td>{product.specs.material}</td>
+                        <td>Chất liệu chính</td>
+                        <td>{product.specs.material || 'Mây tre đan / Gỗ tự nhiên / Gốm sứ'}</td>
                       </tr>
                       <tr>
-                        <td>Đặc tính âm thanh</td>
-                        <td>{product.specs.sound || "Tiếng 'Pinh' đanh vang ngân dài"}</td>
+                        <td>Phương pháp chế tác</td>
+                        <td>Đan tay thủ công 100% & xử lý chống mối mọt tự nhiên</td>
                       </tr>
                       <tr>
-                        <td>Nhiên liệu & Van ga</td>
-                        <td>{product.specs.fuel || 'Bình Gas nạp chuẩn'}</td>
+                        <td>Phong cách kiến trúc</td>
+                        <td>Wabi-Sabi, BoHo, Tối giản Scandinavian & Vintage</td>
                       </tr>
                       <tr>
-                        <td>Xuất xứ & Chế tác</td>
-                        <td>{product.specs.origin || 'Chính hãng'}</td>
+                        <td>Xuất xứ làng nghề</td>
+                        <td>{product.specs.origin || 'Làng nghề truyền thống Việt Nam'}</td>
                       </tr>
                       <tr>
-                        <td>Chế độ bảo hành</td>
-                        <td>{product.specs.warranty || 'Bảo hành trọn đời'}</td>
+                        <td>Chính sách bảo hành</td>
+                        <td>{product.specs.warranty || 'Bảo hành 12 tháng kết cấu'}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -293,12 +293,12 @@ export default function ProductDetailPage() {
               {/* Tab 3: Guide */}
               {activeTab === 'guide' && (
                 <div className="tab-pane active">
-                  <h3 className="tab-title">Hướng Dẫn Bơm Ga & Thay Đá Lửa Đúng Cách</h3>
+                  <h3 className="tab-title">Hướng Dẫn Bảo Quản & Vệ Sinh Đồ Thủ Công Decor</h3>
                   <p style={{ lineHeight: 1.8 }}>
-                    <strong>1. Hướng dẫn bơm ga:</strong> Sử dụng bình gas Butane chuyên dụng (lọc 5 lần). Quay ngược đầu bật lửa lên trên, dùng tô vít chuyên dụng vặn mở ốc nạp ga đáy. Ấn bình ga thẳng đứng vào van nạp trong 3-5 giây. Sau khi bơm, chờ 2 phút cho nhiệt độ bình ổn mới đánh lửa.
+                    <strong>1. Đặt nơi khô ráo, thoáng mát:</strong> Tránh để sản phẩm mây tre và gỗ tại nơi có độ ẩm cao kéo dài hoặc tiếp xúc trực tiếp dưới ánh nắng gắt nhiệt độ cao.
                   </p>
                   <p style={{ marginTop: 12, lineHeight: 1.8 }}>
-                    <strong>2. Hướng dẫn thay đá:</strong> Gạt lẫy đá lửa trên thân máy, tháo thanh đẩy đá ra ngoài. Cho 1 viên đá lửa mới chuyên dụng Dupont vào ống đá, sau đó nạp lại thanh đẩy đá và khóa lẫy.
+                    <strong>2. Vệ sinh định kỳ:</strong> Dùng chổi cọ mềm hoặc khăn ẩm vắt khô để lau sạch bụi bẩn bám trên kẽ đan. Nếu sản phẩm bị ướt, hãy phơi gió nơi bóng râm cho khô hoàn toàn trước khi sử dụng tiếp.
                   </p>
                 </div>
               )}
@@ -313,14 +313,14 @@ export default function ProductDetailPage() {
                         <strong>Nguyễn Văn Hùng</strong>
                         <span style={{ color: '#ffc107' }}>★★★★★</span>
                       </div>
-                      <p style={{ fontSize: '0.875rem', color: '#475569' }}>"Tiếng Pinh đanh tuyệt vời! Đóng gói hộp gỗ nhung quá sang trọng. Giao hàng hỏa tốc trong 2h rất hài lòng."</p>
+                      <p style={{ fontSize: '0.875rem', color: '#475569' }}>"Đường đan rất chắc chắn và đều đẹp! Màu mây tự nhiên phối với phòng khách tông gỗ tạo cảm giác ấm áp tuyệt vời. Giao hàng nhanh và đóng gói kỹ càng."</p>
                     </div>
                     <div style={{ padding: 16, background: '#f8fafc', borderRadius: 8, border: '1px solid #e2e8f0' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                         <strong>Trần Thị Minh Anh</strong>
                         <span style={{ color: '#ffc107' }}>★★★★★</span>
                       </div>
-                      <p style={{ fontSize: '0.875rem', color: '#475569' }}>"Mua tặng sếp dịp sinh nhật, sếp thích mê tiếng quẹt. Cảm ơn shop tư vấn rất nhiệt tình!"</p>
+                      <p style={{ fontSize: '0.875rem', color: '#475569' }}>"Mua làm quà tặng tân gia bạn mình khen tấm tắc. Sản phẩm hoàn thiện tỉ mỉ hơn cả hình ảnh chụp trên web. Sẽ ủng hộ shop thêm nhiều món nữa!"</p>
                     </div>
                   </div>
                 </div>

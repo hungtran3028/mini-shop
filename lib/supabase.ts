@@ -14,7 +14,7 @@ export function mapSupabaseProduct(row: any): Product {
     'noi-that-gia-dung': 'Nội thất gia dụng',
   };
 
-  const categoryId = row.category_id || row.category || 'st-dupont';
+  const categoryId = row.category_id || row.category || 'do-thu-cong';
   const priceNum = Number(row.price) || 0;
   const formattedPrice = row.price_formatted || (priceNum ? new Intl.NumberFormat('vi-VN').format(priceNum) + 'đ' : '0đ');
 

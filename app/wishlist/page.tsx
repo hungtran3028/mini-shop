@@ -45,7 +45,7 @@ export default function WishlistPage() {
               <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: 6, letterSpacing: 1 }}>
                 DANH SÁCH YÊU THÍCH (<span id="wishlistTitleCount" style={{ color: 'var(--color-accent)' }}>{favoriteProducts.length}</span>)
               </h1>
-              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Những tuyệt tác bật lửa sang trọng bạn đã lưu lại</p>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Những món đồ thủ công mỹ nghệ tinh xảo bạn đã lưu lại</p>
             </div>
             {favoriteProducts.length > 0 && (
               <button 
@@ -70,7 +70,7 @@ export default function WishlistPage() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </div>
                 <h2 className="empty-title" style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: 12, letterSpacing: 1 }}>DANH SÁCH YÊU THÍCH ĐANG TRỐNG</h2>
-                <p className="empty-desc" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', maxWidth: 500, margin: '0 auto 28px' }}>Hãy bấm vào biểu tượng trái tim trên các sản phẩm để lưu giữ những tuyệt tác bật lửa đẳng cấp nhất!</p>
+                <p className="empty-desc" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', maxWidth: 500, margin: '0 auto 28px' }}>Hãy bấm vào biểu tượng trái tim trên các sản phẩm để lưu giữ những món đồ thủ công decor bạn yêu thích nhất!</p>
                 <Link href="/products" className="btn-browse-products" style={{ display: 'inline-block', padding: '14px 32px', background: 'var(--color-accent)', color: '#ffffff', fontSize: '0.8rem', fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', borderRadius: 'var(--radius-sm)', textDecoration: 'none' }}>KHÁM PHÁ SẢN PHẨM NGAY</Link>
               </div>
             ) : (

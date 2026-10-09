@@ -1113,7 +1113,7 @@ img {
 /* Compact Page Banner (For Cart, Checkout, Wishlist, Login, Detail) */
 .page-banner {
   background-color: var(--color-bg-dark);
-  background-image: linear-gradient(180deg, rgba(18, 18, 18, 0.92) 0%, rgba(26, 26, 26, 0.96) 100%), url('/assets/img/banner/banner.png');
+  background-image: linear-gradient(180deg, rgba(18, 18, 18, 0.92) 0%, rgba(26, 26, 26, 0.96) 100%), url('/assets/images/banner/banner-trang-chu-mini-shop.webp');
   background-size: cover;
   background-position: center;
   height: auto;
@@ -1129,7 +1129,7 @@ img {
 .products-page-banner,
 .collection-hero {
   background-color: var(--color-bg-dark);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/img/banner/banner.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/banner/banner-trang-chu-mini-shop.webp');
   background-size: cover;
   background-position: center;
   height: 40vh;
