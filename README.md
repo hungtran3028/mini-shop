@@ -1,5 +1,8 @@
 # 🌿 Mini Shop Decor — Dự Án Mẫu Vibe Coding (Chương 1 - 8)
 
+> 📖 **DÀNH CHO SINH VIÊN:** Xem ngay tài liệu hướng dẫn chi tiết từ kiến trúc đến triển khai A-Z tại:  
+> 👉 [**HUONG_DAN_KIEN_TRUC_VA_TRIEN_KHAI.md**](./HUONG_DAN_KIEN_TRUC_VA_TRIEN_KHAI.md)
+
 Dự án thương mại điện tử chuyên đồ thủ công mỹ nghệ, gốm sứ độc bản và nội thất trang trí nhà cửa mộc mạc, được xây dựng hoàn chỉnh theo giáo trình **"Vibe Coding với Antigravity" (Khóa AI-03)** của **Trung tâm Đào tạo AI Sao Việt**.
 
 ---
